@@ -1,0 +1,53 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build for Raspberry Pi (arm64)",
+			"type": "shell",
+			"command": "go build -o zen80",
+			"options": {
+				"env": {
+					"GOOS": "linux",
+					"GOARCH": "arm64",
+					"CGO_ENABLED": "0"
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Build for Raspberry Pi Zero W (32-bit ARMv6)",
+			"type": "shell",
+			"command": "go build -o zen80ARMv6",
+			"options": {
+				"env": {
+					"GOOS": "linux",
+					"GOARCH": "arm",
+					"GOARM": "6",
+					"CGO_ENABLED": "0"
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Raspberry Pi targets",
+			"dependsOn": [
+				"Build for Raspberry Pi (arm64)",
+				"Build for Raspberry Pi Zero W (32-bit ARMv6)"
+			],
+			"dependsOrder": "sequence",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		}
+	]
+}
