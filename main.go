@@ -14,37 +14,6 @@ import (
 )
 
 func main() {
-	// Display gridview
-	newPrimitive := func(text string) tview.Primitive {
-		return tview.NewTextView().
-			SetTextAlign(tview.AlignCenter).
-			SetText(text)
-	}
-	menu := newPrimitive("Menu")
-	main := newPrimitive("Main content")
-	sideBar := newPrimitive("Side Bar")
-	footer := tview.NewTextView().SetTextAlign(tview.AlignCenter)
-
-	grid := tview.NewGrid().
-		SetRows(3, 0, 3).
-		SetColumns(30, 0, 30).
-		SetBorders(true).
-		AddItem(newPrimitive("Header"), 0, 0, 1, 3, 0, 0, false).
-		AddItem(footer, 2, 0, 1, 3, 0, 0, false)
-
-	// Layout for screens narrower than 100 cells (menu and side bar are hidden).
-	grid.AddItem(menu, 0, 0, 0, 0, 0, 0, false).
-		AddItem(main, 1, 0, 1, 3, 0, 0, false).
-		AddItem(sideBar, 0, 0, 0, 0, 0, 0, false)
-
-	// Layout for screens wider than 100 cells.
-	grid.AddItem(menu, 1, 0, 1, 1, 0, 100, false).
-		AddItem(main, 1, 1, 1, 1, 0, 100, false).
-		AddItem(sideBar, 1, 2, 1, 1, 0, 100, false)
-
-	if err := tview.NewApplication().SetRoot(grid, true).SetFocus(grid).Run(); err != nil {
-		panic(err)
-	}
 
 	programPath := flag.String("program", "", "path to a raw Z80 binary to run")
 	flag.Parse()
@@ -76,9 +45,41 @@ func main() {
 	}
 
 	// Result is in register A
-	fmt.Fprintf(footer, "Result: %d\n", cpu.A)
 	fmt.Printf("Result: %d\n", cpu.A)
 
+		// Display gridview
+	newPrimitive := func(text string) tview.Primitive {
+		return tview.NewTextView().
+			SetTextAlign(tview.AlignCenter).
+			SetText(text)
+	}
+	menu := newPrimitive("Menu")
+	main := newPrimitive("Main content")
+	sideBar := newPrimitive("Side Bar")
+	footer := tview.NewTextView().SetTextAlign(tview.AlignCenter)
+
+	grid := tview.NewGrid().
+		SetRows(3, 0, 3).
+		SetColumns(30, 0, 30).
+		SetBorders(true).
+		AddItem(newPrimitive("Header"), 0, 0, 1, 3, 0, 0, false).
+		AddItem(footer, 2, 0, 1, 3, 0, 0, false)
+
+	// Layout for screens narrower than 100 cells (menu and side bar are hidden).
+	grid.AddItem(menu, 0, 0, 0, 0, 0, 0, false).
+		AddItem(main, 1, 0, 1, 3, 0, 0, false).
+		AddItem(sideBar, 0, 0, 0, 0, 0, 0, false)
+
+	// Layout for screens wider than 100 cells.
+	grid.AddItem(menu, 1, 0, 1, 1, 0, 100, false).
+		AddItem(main, 1, 1, 1, 1, 0, 100, false).
+		AddItem(sideBar, 1, 2, 1, 1, 0, 100, false)
+
+	if err := tview.NewApplication().SetRoot(grid, true).SetFocus(grid).Run(); err != nil {
+		panic(err)
+	}
+	
+	fmt.Fprintf(footer, "Result: %d\n", cpu.A)
 }
 
 func loadProgramFromFile(path string) ([]uint8, error) {
