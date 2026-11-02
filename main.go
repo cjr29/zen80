@@ -53,5 +53,6 @@ func loadProgramFromFile(path string) ([]uint8, error) {
 	if len(program) > 1<<16 {
 		return nil, fmt.Errorf("program %q is %d bytes; maximum size is 65536 bytes", path, len(program))
 	}
+	fmt.Printf("Loaded program %q (%d bytes)\n", path, len(program))
 	return program, nil
 }
