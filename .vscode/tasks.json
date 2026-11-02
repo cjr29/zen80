@@ -37,6 +37,23 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Build for macOS (arm64)",
+			"type": "shell",
+			"command": "go build -o zen80MacOSArm64",
+			"options": {
+				"env": {
+					"GOOS": "darwin",
+					"GOARCH": "arm64",
+					"CGO_ENABLED": "0"
+				}
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
 			"label": "Build Raspberry Pi targets",
 			"dependsOn": [
 				"Build for Raspberry Pi (arm64)",
