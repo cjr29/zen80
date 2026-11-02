@@ -54,10 +54,11 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "Build Raspberry Pi targets",
+			"label": "Build all targets",
 			"dependsOn": [
 				"Build for Raspberry Pi (64bit)",
-				"Build for Raspberry Pi Zero W (32bit)"
+				"Build for Raspberry Pi Zero W (32bit)",
+				"Build for macOS"
 			],
 			"dependsOrder": "sequence",
 			"group": {
