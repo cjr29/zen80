@@ -9,9 +9,14 @@ import (
 	"github.com/ha1tch/zen80/io"
 	"github.com/ha1tch/zen80/memory"
 	"github.com/ha1tch/zen80/z80"
+
+	"github.com/cjr29/zen80/display"
 )
 
 func main() {
+	// Display gridview
+	display.gridview()
+
 	programPath := flag.String("program", "", "path to a raw Z80 binary to run")
 	flag.Parse()
 
