@@ -21,7 +21,7 @@
 		{
 			"label": "Build for Raspberry Pi Zero W (32-bit ARMv6)",
 			"type": "shell",
-			"command": "go build -o zen80ARMv6",
+			"command": "go build -o zen80ARMv632bit",
 			"options": {
 				"env": {
 					"GOOS": "linux",
