@@ -6,4 +6,4 @@ package version
 
 // Version is the current version of zen80.
 // This MUST match the contents of the VERSION file.
-const Version = "0.5.7"
+const Version = "0.6.0"

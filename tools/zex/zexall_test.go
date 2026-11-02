@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ha1tch/zen80/z80"
+	"github.com/cjr29/zen80/z80"
 )
 
 // TestZEXALL_CPMSim_BDOS_PCTrap runs the ZEXALL test suite -- ALL flags,

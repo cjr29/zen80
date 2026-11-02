@@ -4,7 +4,7 @@ import (
 	"github.com/rivo/tview"
 )
 
-func gridview() {
+func Gridview() {
 	newPrimitive := func(text string) tview.Primitive {
 		return tview.NewTextView().
 			SetTextAlign(tview.AlignCenter).
