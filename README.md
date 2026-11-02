@@ -77,6 +77,16 @@ func main() {
 
 ## Usage
 
+### Running a program file
+
+The root `zen80` program runs the built-in example by default. To load and run a raw Z80 binary from address `0x0000`, pass its path with `-program`:
+
+```sh
+go run . -program path/to/program.bin
+```
+
+Binary files must fit in the emulator's 64 KB memory.
+
 ### Basic CPU Control
 
 ```go
